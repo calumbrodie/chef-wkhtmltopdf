@@ -1,4 +1,4 @@
-pkgs = ['xorg-x11-fonts-75dpi', 'xorg-x11-fonts-Type1']
+pkgs = ['xorg-x11-fonts-75dpi', 'xorg-x11-fonts-Type1', 'libpng', 'libjpeg', 'libX11', 'libXext', 'libXrender']
 pkgs.each do |pkg|
     package pkg do
         action :install
