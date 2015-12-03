@@ -1,7 +1,7 @@
 ruby_block 'install-wkhtmltopdf' do
   block do
     package "#{Chef::Config[:file_cache_path]}/wkhtmltox-0.12.2_linux-centos6-amd64.rpm" do
-        action :nothing
+        action :install
     end
   end
   action :nothing
