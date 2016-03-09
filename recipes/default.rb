@@ -1,4 +1,4 @@
-package "libpng12"
+package "libpng"
 
 package "#{Chef::Config[:file_cache_path]}/wkhtmltox-#{node[:wkhtmltopdf][:version]}_linux-centos6-amd64.rpm" do
     action :nothing
