@@ -1,3 +1,8 @@
+# On redhat 7 we require the old library to work
+if node['platform_family'].to_s == "rhel" && node['platform_version'].to_f == 7.0
+    package "libpng12"
+end
+
 package "libpng"
 
 package "#{Chef::Config[:file_cache_path]}/wkhtmltox-#{node[:wkhtmltopdf][:version]}_linux-centos6-amd64.rpm" do
