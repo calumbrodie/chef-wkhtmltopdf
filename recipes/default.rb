@@ -1,5 +1,5 @@
 # On redhat 7 we require the old library to work
-if node['platform_family'].to_s == "rhel" && node['platform_version'].to_f == 7.0
+if node['platform_family'].to_s == "rhel" && node['platform_version'].to_i == 7
     package "libpng12"
 end
 
