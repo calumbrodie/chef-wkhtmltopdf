@@ -5,11 +5,11 @@ end
 
 package "libpng"
 
-package "#{Chef::Config[:file_cache_path]}/wkhtmltox-#{node[:wkhtmltopdf][:version]}_linux-centos6-amd64.rpm" do
+package "#{Chef::Config[:file_cache_path]}/wkhtmltox-#{node[:wkhtmltopdf][:version]}_linux-centos#{node['platform_version'].to_i}-amd64.rpm" do
     action :nothing
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/wkhtmltox-#{node[:wkhtmltopdf][:version]}_linux-centos6-amd64.rpm" do
+remote_file "#{Chef::Config[:file_cache_path]}/wkhtmltox-#{node[:wkhtmltopdf][:version]}_linux-centos#{node['platform_version'].to_i}-amd64.rpm" do
     source "#{node[:wkhtmltopdf][:link]}"
     not_if "which wkhtmltopdf"
     action :create_if_missing
