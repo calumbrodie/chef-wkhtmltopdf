@@ -4,7 +4,7 @@ sudo: required
 services: docker
 
 before_script:
-  - gem install bundler
+  - gem install bundler;
   - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3:
 
 # https://github.com/zuazo/kitchen-in-travis-native/issues/1#issuecomment-142455888
