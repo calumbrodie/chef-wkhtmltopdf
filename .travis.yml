@@ -5,7 +5,7 @@ services: docker
 
 before_script:
   - gem install bundler;
-  - bundle install --path=vendor/bundle:
+  - bundle install
 
 # https://github.com/zuazo/kitchen-in-travis-native/issues/1#issuecomment-142455888
 #before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
