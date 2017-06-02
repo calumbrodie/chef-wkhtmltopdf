@@ -1,5 +1,5 @@
 # chef-wkhtmltopdf
-wkhtmltopdf cookbook
+wkhtmltopdfonf
 
 [![Build Status](https://travis-ci.org/usemarkup/chef-wkhtmltopdf.svg?branch=master)](https://travis-ci.org/usemarkup/chef-wkhtmltopdf)
 
