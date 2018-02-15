@@ -1,32 +1,47 @@
 ---
 driver:
   name: docker
+  privileged: true
+  use_sudo: false
 
 platforms:
-  - name: centos-6.8
+  - name: centos-7
     driver_config:
+      require_chef_omnibus: "13.1.31"
+      image: centos/systemd
+      run_command: /usr/sbin/init
       privileged: true
-      use_sudo: false
       provision_command:
-        - yum install -y initscripts net-tools wget && curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 12.6.0 && rm install.sh
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd.service
+        - yum install net-tools ca-certificates -y && curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 13.1.31 && rm install.sh
 
-  - name: centos-7.2
+  - name: centos-69
     driver_config:
+      require_chef_omnibus: "13.1.31"
+      image: centos:6.9
       privileged: true
-      use_sudo: false
       provision_command:
-        - yum install -y initscripts net-tools wget && curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 12.6.0 && rm install.sh
+        - yum install net-tools ca-certificates -y && curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 13.1.31 && rm install.sh
+
+  - name: centos-69-chef-12
+    driver_config:
+      require_chef_omnibus: "12.7.2"
+      image: centos:6.9
+      privileged: true
+      provision_command:
+        - yum install net-tools ca-certificates -y && curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 12.7.2 && rm install.sh
 
 provisioner:
   name: chef_solo
-  require_chef_omnibus: "12.6.0"
-  client_rb:
-    add_formatter: min
-  solo_rb:
-    file_atomic_update: false
+
+verifier:
+  name: inspec
 
 suites:
   - name: default
     run_list:
-      - recipe[wkhtmltopdf::default]
-    attributes:
+      - recipe[wkhtmltopdf-centos::default]
+    verifier:
+      inspec_tests:
+        - tests/wkhtmltopdf.rb
