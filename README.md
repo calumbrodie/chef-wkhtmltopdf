@@ -1,8 +1,16 @@
-# chef-wkhtmltopdf
-wkhtmltopdf cookbook
+# wkhtmltopdf
+
+wkhtmltopdf cookbook for cento
 
 [![Build Status](https://travis-ci.org/usemarkup/chef-wkhtmltopdf.svg?branch=master)](https://travis-ci.org/usemarkup/chef-wkhtmltopdf)
 
-# Support Platforms
-CentOS 6.7
-CentOS 7.0
+
+### Chef Tested
+
+- Chef 12.7.2
+- Chef 13.1.31
+
+### Operating System Support
+
+- CentOS 6.8+
+- CentOS 7+

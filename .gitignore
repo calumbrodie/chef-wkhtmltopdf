@@ -9,3 +9,7 @@ bin/*
 .kitchen.local.yml
 
 Berksfile.lock
+vendor/
+
+Gemfile.lock
+Berksfile.lock
