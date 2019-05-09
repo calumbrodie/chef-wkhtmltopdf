@@ -34,6 +34,7 @@ platforms:
 
 provisioner:
   name: chef_solo
+  chef_license: accept-no-persist
 
 verifier:
   name: inspec
